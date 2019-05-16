@@ -3,11 +3,13 @@ import React from 'react';
 import Clock from './Clock';
 import $ from 'jquery';
 import './Student.css'
+import { Button,Modal ,Calendar} from 'antd';
 
 class Student extends React.Component {
   constructor(props){
     super(props);
     this.state = {
+      visible:false,
       stus:[],
       form:{
         username:'terry',
@@ -76,6 +78,26 @@ class Student extends React.Component {
     return (
       <div className='student'>
         <h2>{name}</h2>
+        <Button 
+          block={true} 
+          loading={true} 
+          onClick={()=>{this.setState({visible:true})}} type="primary">Primary</Button>
+        <Button>Default</Button>
+        <Button type="dashed">Dashed</Button>
+        <Button type="danger">Danger</Button>
+        <Button type="link">Link</Button>
+
+        <Modal
+          title="Basic Modal"
+          visible={this.state.visible}
+        >
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+        </Modal>
+
+        <Calendar />
+
         <Clock />
         ---{JSON.stringify(form)}
         <form>

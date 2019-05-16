@@ -1,5 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
+import { Table} from 'antd';
+
 
 class Course extends React.Component {
   constructor(){
@@ -72,6 +74,16 @@ class Course extends React.Component {
 
   render(){
     let {teachers,courses, form} = this.state;
+    let columns =[{
+      title: 'ID',
+      dataIndex: 'id',
+    },{
+      title: '课程名称',
+      dataIndex: 'name',
+    },{
+      title: '学分',
+      dataIndex: 'credit',
+    }]
 
     return (
       <div className="course">
@@ -95,6 +107,8 @@ class Course extends React.Component {
           </select> <br/>
           <input type="submit" value="提交"/>
         </form>
+        {/* 课程信息 */}
+        <Table bordered={true} columns={columns} dataSource={courses} />
         {/* 课程列表 */}
         <table className='tbl'>
           <thead>
